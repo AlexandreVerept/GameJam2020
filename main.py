@@ -1,7 +1,8 @@
 import os
 import pygame
 from lib.scenes import SceneCollection
-from scenes.splash import SplashScene, Other
+from scenes.splash import SplashScene
+from scenes.gallery import GalleryScene
 
 SCREEN_SIZE = (1024, 640)
 
@@ -23,7 +24,7 @@ started = False
 # Create and fill SceneCollection
 scenes = SceneCollection()
 scenes.append(SplashScene())
-scenes.append(Other())
+scenes.append(GalleryScene())
 
 
 # Main loop
