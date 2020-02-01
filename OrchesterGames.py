@@ -53,11 +53,11 @@ class musicGame(miniGame):
         self.count += 1
         self.cursor.increase()
         if pygame.mouse.get_pressed()[0]:
-            if 130/4 * (self.redPosition+1)-10 >= self.count >= 130/4*(self.redPosition+1)-10:
-                print(130/4 * (self.redPosition+1)-10,"win!!!!",self.count,130/4*(self.redPosition+1)-10)
+            self.background = pygame.image.load(os.path.join('Ressources', 'Concert_Chat_Triangle_Action_Without_Note_ding.jpg'))
+            self.background = pygame.transform.scale(self.background, (1024,640))
+            if 130/4 * (self.redPosition+1)-20 <= self.count <= 130/4*(self.redPosition+1)+15:
                 return(True)
             else:
-                pprint(130/4 * (self.redPosition+1)-10,"loss",self.count,130/4*(self.redPosition+1)-10)
                 return(True)
         if self.count > 130:
             return(True)

@@ -20,7 +20,6 @@ class Menu(object):
         return(self.startButton.checkClick())
 
 class Button(object):
-
     def __init__(self,x,y,width,height,txt,pictureName=""):
         self.x = x
         self.y = y

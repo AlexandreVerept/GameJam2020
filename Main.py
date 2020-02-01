@@ -2,7 +2,7 @@ import pygame
 import os
 import GameModule as gm
 from random import randint
-from GameNumber1 import spamGame
+from OrchesterGames import spamGame, musicGame
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
@@ -13,7 +13,8 @@ win = pygame.display.set_mode((1024,640))
 pygame.display.set_caption("Consequences")
 clock = pygame.time.Clock()
 objectList = []
-gameList = [spamGame()]
+#gameList = [spamGame(),musicGame()]
+gameList = [musicGame()]
 
 def redrawGameWindow(objectList):
     for obj in objectList:
@@ -26,7 +27,7 @@ objectList.append(gameMenu)
 run = True
 inGame = False
 while run:
-    clock.tick(27)
+    clock.tick(60)
     # quit
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
