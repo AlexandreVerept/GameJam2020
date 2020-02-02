@@ -48,18 +48,32 @@ class musicGame(miniGame):
         self.redPosition = randint(1,3)
         #cursor
         self.cursor = cursor()
+        self.win = False
+        self.loose = False
+        self.animation = False
+        self.count = 0
 
     def play(self):
         self.count += 1
         self.cursor.increase()
-        if pygame.mouse.get_pressed()[0]:
-            self.background = pygame.image.load(os.path.join('Ressources', 'Concert_Chat_Triangle_Action_Without_Note_ding.jpg'))
-            self.background = pygame.transform.scale(self.background, (1024,640))
-            if 130/4 * (self.redPosition+1)-20 <= self.count <= 130/4*(self.redPosition+1)+15:
+        if not self.animation:
+            if pygame.mouse.get_pressed()[0]:
+                self.background = pygame.image.load(os.path.join('Ressources', 'Concert_Chat_Triangle_Action_Without_Note_ding.jpg'))
+                self.background = pygame.transform.scale(self.background, (1024,640))
+                if 130/4 * (self.redPosition+1)-20 <= self.count <= 130/4*(self.redPosition+1)+15:
+                    self.win = True
+                else:
+                    self.loose = True
+                self.animation = True
+                self.count = 0
+        else:
+            if self.count > 27:
                 return(True)
-            else:
-                return(True)
-        if self.count > 130:
+        
+        if self.count > 150:
+            self.animation = True
+            self.loose = True
+            self.count = 0
             return(True)
 
     def reset(self):
@@ -81,8 +95,15 @@ class cursor():
         self.x = 1024/4
 
     def increase(self):
-        if self.x < 875:
+        if self.x < 900:
             self.x += 5
 
     def draw(self,win):
         pygame.draw.rect(win,(40,255,40),pygame.Rect((self.x,self.y), self.size))
+
+class catGame(minigame):
+        def __init__(self):
+        self.count = 0
+        self.background = pygame.image.load(os.path.join('Ressources', 'Concert_Chat_Triangle_Idle_Without_Note.jpg'))
+        self.background = pygame.transform.scale(self.background, (1024,640))
+        
