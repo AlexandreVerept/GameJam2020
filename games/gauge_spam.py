@@ -7,7 +7,7 @@ from lib.modules import Timer
 
 class GaugeSpam(Scene):
     def __init__(self):
-        Scene.__init__(self, 'game0', 'orchestra_cat_tuba.jpg')
+        Scene.__init__(self, 'game0', 'orchestra_dog.jpg')
         self.gauge = Gauge(100, self.height / 2, (50, 200), True, 5)
         self.timer = Timer(990, 600, 80, True, 3)
         self.click = False
