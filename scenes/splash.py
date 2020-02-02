@@ -9,7 +9,7 @@ class SplashScene(Scene):
         Scene.__init__(self, 'splash', 'background_yellow.png')
 
         self.gallery = ButtonImage(100, 550, 'gallery.png', (108, 108), True)
-        self.start_button = ButtonImage(self.width / 2, self.height * 0.6, 'start.png', (500, 200), True)
+        self.start_button = ButtonImage(self.width / 2 + 30, self.height * 0.6, 'start.png', (300, 200), True)
 
         self.title = pygame.image.load(os.path.join('assets', 'title.png'))
         self.title = pygame.transform.scale(self.title, pygame.display.get_surface().get_size())

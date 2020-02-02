@@ -104,9 +104,9 @@ class OrchestraGame(Scene):
 
         if self.timer.is_over():
             if self.won:
-                self.transit('trans1', 'game2', 45)
+                self.transit('trans_win', 'game2', 45)
             else:
-                self.transit('trans1', 'splash', 45)
+                self.transit('trans_lose', 'splash', 45)
             return True
 
         if not self.click:

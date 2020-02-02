@@ -22,7 +22,7 @@ class GaugeSpam(Scene):
         Scene.draw(self, win)
         self.gauge.draw(win)
         self.timer.draw(win)
-        win.blit(self.current_clap, self.current_clap.get_rect(center=(self.width/2, self.height/2)))
+        win.blit(self.current_clap, self.current_clap.get_rect(center=(self.width/2, self.height * 3/4)))
 
     def reset(self):
         Scene.reset(self)
@@ -35,7 +35,7 @@ class GaugeSpam(Scene):
         self.gauge.decrease(0.1)
 
         if self.timer.is_over():
-            self.transit('trans1', 'splash', 45)
+            self.transit('trans_lose', 'splash', 45)
             return True
 
         if self.click:
@@ -50,4 +50,4 @@ class GaugeSpam(Scene):
                 self.click = True
 
         if self.gauge.is_full():
-            self.transit('trans1', 'game1', 45)
+            self.transit('trans_win', 'game1', 45)
