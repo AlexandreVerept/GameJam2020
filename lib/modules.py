@@ -46,7 +46,7 @@ class Timer(object):
         self.value = 0
         self.timer_max = timer_max
 
-        self.font_timer = pygame.font.SysFont('comicsansms', self.size)
+        self.font_timer = pygame.font.Font(os.path.join('assets', 'SigmarOne-Regular.ttf'), self.size)
         self.text_timer = self.font_timer.render(str(self.timer_max), True, (255, 255, 255))
 
     def draw(self, win):

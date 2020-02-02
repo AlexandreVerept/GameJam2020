@@ -1,4 +1,5 @@
 import pygame
+import os
 from lib.scenes import Scene
 from lib.modules import ButtonImage
 
@@ -7,8 +8,8 @@ class GalleryScene(Scene):
     def __init__(self):
         Scene.__init__(self, 'gallery', 'menu_background.png')
 
-        self.font_title = pygame.font.SysFont('comicsansms', 80)
-        self.font_back = pygame.font.SysFont('comicsansms', 30)
+        self.font_title = pygame.font.Font(os.path.join('assets', 'SigmarOne-Regular.ttf'), 80)
+        self.font_back = pygame.font.Font(os.path.join('assets', 'SigmarOne-Regular.ttf'), 30)
 
         self.back = ButtonImage(100, 80, 'back.png', (130, 130), True)
         self.back_text = self.font_back.render("Back", True, (255, 255, 255))
