@@ -21,8 +21,8 @@ class GalleryScene(Scene):
         win.blit(self.back_text, self.back_text.get_rect(center=(100, 150)))
         win.blit(self.title, self.title.get_rect(center=(self.width/2, 200)))
 
-    def update(self):
-        Scene.update(self)
+    def update(self, mixer):
+        Scene.update(self, mixer)
 
         if self.back.is_clicked():
             self.start('splash')

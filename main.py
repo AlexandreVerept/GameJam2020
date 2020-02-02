@@ -3,6 +3,8 @@ import pygame
 from lib.scenes import SceneCollection
 from scenes.splash import SplashScene
 from scenes.gallery import GalleryScene
+from scenes.transitions import Transition1
+from games.gauge_spam import GaugeSpam
 
 SCREEN_SIZE = (1024, 640)
 
@@ -10,6 +12,7 @@ SCREEN_SIZE = (1024, 640)
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 # Init game
+mixer = pygame.mixer.init()
 pygame.init()
 clock = pygame.time.Clock()
 
@@ -25,6 +28,8 @@ started = False
 scenes = SceneCollection()
 scenes.append(SplashScene())
 scenes.append(GalleryScene())
+scenes.append(Transition1())
+scenes.append(GaugeSpam())
 
 
 # Main loop
@@ -40,7 +45,7 @@ while run:
     scene = scenes.get_active()
 
     # Update scene and draw it
-    scene.update()
+    scene.update(mixer)
     scene.draw(win)
     pygame.display.update()
 

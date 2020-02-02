@@ -12,20 +12,20 @@ class SplashScene(Scene):
 
         self.gallery = ButtonImage(100, 500, 'gallery.png', (156, 191), True)
         self.gallery_text = self.font_gallery.render("Gallery", True, (255, 255, 255))
-        self.start = ButtonImage(self.width/2, self.height * 0.6, 'start.png', (500, 200), True)
+        self.start_button = ButtonImage(self.width / 2, self.height * 0.6, 'start.png', (500, 200), True)
         self.title = self.font_title.render("Get Your Fix!", True, (255, 255, 255))
 
     def draw(self, win):
         Scene.draw(self, win)
         self.gallery.draw(win)
-        self.start.draw(win)
+        self.start_button.draw(win)
         win.blit(self.gallery_text, self.gallery_text.get_rect(center=(100, 600)))
         win.blit(self.title, self.title.get_rect(center=(self.width/2, self.height/4)))
 
-    def update(self):
-        Scene.update(self)
+    def update(self, mixer):
+        Scene.update(self, mixer)
 
-        if self.start.is_clicked():
+        if self.start_button.is_clicked():
             self.start('game0')
 
         if self.gallery.is_clicked():

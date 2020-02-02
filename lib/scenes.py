@@ -4,7 +4,7 @@ import os
 
 # Scene object
 class Scene(object):
-    def __init__(self, key, background=None):
+    def __init__(self, key, background=None, timer=False):
         self.key = key
         self.ticks = 0
         self.collection = None
@@ -28,10 +28,38 @@ class Scene(object):
     def start(self, key):
         if self.collection:
             self.collection.set_active(key)
+            self.collection.get(key).reset()
 
-    def update(self):
+    def transit(self, transition_key, destination_key, ticks):
+        self.collection.get(transition_key).set_destination(destination_key, ticks)
+        self.start(transition_key)
+
+    def reset(self):
+        self.ticks = 0
+
+    def update(self, mixer):
         (self.width, self.height) = pygame.display.get_surface().get_size()
         self.ticks = self.ticks + 1
+
+
+
+class TransitionScene(Scene):
+    def __init__(self, key, background=None):
+        Scene.__init__(self, key, background)
+        self.destination_key = False
+        self.transit_ticks = -1
+
+    def set_destination(self, key, ticks):
+        self.destination_key = key
+        self.transit_ticks = ticks
+
+    def update(self, mixer):
+        Scene.update(self, mixer)
+        if 0 < self.transit_ticks <= self.ticks:
+            if self.collection.get(self.destination_key):
+                self.start(self.destination_key)
+            else:
+                self.start('splash')
 
 
 # Scene collection object
