@@ -11,7 +11,6 @@ class GalleryScene(Scene):
         self.font_back = pygame.font.SysFont('comicsansms', 30)
 
         self.back = ButtonImage(100, 80, 'back.png', (130, 130), True)
-        # self.back = ButtonImage(100, 500, 'back.png', 2, True)
         self.back_text = self.font_back.render("Back", True, (255, 255, 255))
         self.title = self.font_title.render("Gallery", True, (255, 255, 255))
 
